@@ -155,66 +155,60 @@ Dcat.ready(function () {
             enableAnchorOnDoneStep: false,
         },
     }).on('leaveStep', function (e, tab, idx, direction) {
-                @if ($leaving = $steps->getOption('leaving'))
-
-        var callbacks = [];
-
-        @foreach($leaving as $fun)
-        callbacks.push({!! $fun !!});
-        @endforeach
+        @if ($leaving = $steps->getOption('leaving'))
+            var callbacks = [];
+            @foreach($leaving as $fun)
+                callbacks.push({!! $fun !!});
+            @endforeach
 
             return callListeners(callbacks, buildArgs(e, tab, idx, direction));
         @endif
 
     }).on('showStep', function (e, tab, idx, direction) {
-                @if ($shown = $steps->getOption('shown'))
-
-        var callbacks = [];
-
-        @foreach($shown as $fun)
-        callbacks.push({!! $fun !!});
-        @endforeach
-
+        @if ($shown = $steps->getOption('shown'))
+            var callbacks = [];
+            @foreach($shown as $fun)
+                callbacks.push({!! $fun !!});
+            @endforeach
             return callListeners(callbacks, buildArgs(e, tab, idx, direction));
         @endif
     });
 
     @if ($steps->getOption('leaving') || $steps->getOption('shown'))
-
-    // 执行回调函数
-    function callListeners(func, args) {
-        for (var i in func) {
-            if (func[i](args) === false) {
-                return false;
+        // 执行回调函数
+        function callListeners(func, args) {
+            for (var i in func) {
+                if (func[i](args) === false) {
+                    return false;
+                }
             }
         }
-    }
 
-    // 获取步骤表单
-    function getForm(idx) {
-        return box.find('.dcat-step-form [data-toggle="validator"]').eq(idx);
-    }
+        // 获取步骤表单
+        function getForm(idx) {
+            return box.find('.dcat-step-form [data-toggle="validator"]').eq(idx);
+        }
 
-    // 构建参数
-    function buildArgs(e, tab, idx, direction) {
-        return {
-            event: e,
-            tab: tab,
-            index: idx,
-            direction: direction,
-            form: getForm(idx),
-            getFrom: function (idx) {
-                return getForm(idx)
-            },
-            formArray: getForm(idx).formToArray(),
-            getFormArray: function (idx) {
-                return getForm(idx).formToArray();
-            }
-        };
-    }
+        // 构建参数
+        function buildArgs(e, tab, idx, direction) {
+            return {
+                event: e,
+                tab: tab,
+                index: idx,
+                direction: direction,
+                form: getForm(idx),
+                getFrom: function (idx) {
+                    return getForm(idx)
+                },
+                formArray: getForm(idx).formToArray(),
+                getFormArray: function (idx) {
+                    return getForm(idx).formToArray();
+                }
+            };
+        }
     @endif
 
-        smartWizard = smartWizard.data('smartWizard');
+    smartWizard = smartWizard.data('smartWizard');
 
     // 上一步
     var prev = box.find('.sw-btn-prev').click(function (e) {

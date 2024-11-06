@@ -245,7 +245,7 @@ class Builder
                 'backUrl'     => $resource,
             ];
 
-            return view('dcat-admin.form-step::completion-page', $data);
+            return view('joseph-bing-han.dcat-form-step::completion-page', $data);
         });
     }
 
@@ -466,7 +466,7 @@ JS;
      */
     protected function initForm()
     {
-        $this->form->builder()->view('dcat-admin.form-step::steps');
+        $this->form->builder()->view('joseph-bing-han.dcat-form-step::steps');
 
         $this->form->builder()->addVariables(['steps' => $this]);
 

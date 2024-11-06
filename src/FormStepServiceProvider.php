@@ -8,7 +8,7 @@ use Dcat\Admin\Form as BaseForm;
 class FormStepServiceProvider extends ServiceProvider
 {
 	protected $js = [
-        'js/jquery.smartWizard.min.js',
+        'js/jquery.smartWizard.js',
     ];
 	protected $css = [
 		'css/step.css',
