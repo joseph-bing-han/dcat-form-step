@@ -31,16 +31,16 @@
 
     <div class="st-content">
         <div class="st-title">
-            {{ $title }}
+            {!! $title !!}
         </div>
         <div class="st-desc">
-            {{ $description }}
+            {!! $description !!}
         </div>
 
         <div class="st-btn">
-            <a class="btn btn-success" href="{{ $createUrl }}" >{{ trans('admin.continue_creating') }}</a>
-            &nbsp;
             <a class="btn btn-white" href="{{ $backUrl }}"><i class="fa fa-long-arrow-left"></i> {{ trans('admin.back') }}</a>
+            &nbsp;
+            <a class="btn btn-success" href="{{ $createUrl }}" >{{ trans('admin.continue_creating') }}</a>
         </div>
     </div>
 </div>
